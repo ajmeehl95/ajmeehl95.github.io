@@ -103,6 +103,10 @@ textarea:focus-visible {
   gap: 0.5rem;
 }
 
+.brand .deploy { color: var(--ink); font-weight: 700; }
+.brand .digital { color: var(--slate); font-weight: 500; }
+footer .brand .digital { color: var(--slate); }
+
 .brand .dot {
   width: 8px;
   height: 8px;
