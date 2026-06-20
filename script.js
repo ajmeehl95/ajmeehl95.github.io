@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Animated stat counters
   const counters = document.querySelectorAll('.stat-value[data-target]');
+  const statusText = document.querySelector('.deploy-status-text');
   if (counters.length) {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -66,12 +67,16 @@ document.addEventListener('DOMContentLoaded', () => {
           if (entry.isIntersecting) {
             animateCounter(entry.target);
             counterObserver.unobserve(entry.target);
+            if (statusText) {
+              setTimeout(() => { statusText.textContent = 'track record: deployed ✓'; }, 1500);
+            }
           }
         });
       }, { threshold: 0.4 });
       counters.forEach((el) => counterObserver.observe(el));
     } else {
       counters.forEach(animateCounter);
+      if (statusText) statusText.textContent = 'track record: deployed ✓';
     }
   }
 });
